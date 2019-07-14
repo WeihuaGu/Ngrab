@@ -48,3 +48,4 @@ var getTextBlocks = (data) =>{
         return getTextBlocksByNode(getRawRoot(data));
 }
 module.exports.getTextBlocks = getTextBlocks;
+module.exports.isTextBlockTag = isTextBlockTag;
