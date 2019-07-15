@@ -1,17 +1,28 @@
 var grabtextblock = require('./grabtextblock');
 //获取文本块中的文字总长度
 var getAllLength = (textnode) => {
-
-
-
-
+        var text = textnode.textContent;
+        if (text)
+                return text.length;
+        return 0;
 }
 //获取链接文字的总长度
 var getLinkLength = (textnode) => {
+        var linklist = textnode.querySelectorAll("a");
+        var sum = 0;
+        if (linklist.length > 0)
+                linklist.forEach((link) => {
+                        var text = link.textContent;
+                        if (text)
+                                sum = sum + text.length;
 
-
-
+                });
+        return sum;
 }
+
+
+
+
 //获取为无效词的文字总长度
 var getUnrelatedLength = (textnode) => {
 
@@ -55,3 +66,5 @@ var handleTextBlock = (maytextnode, Lmax, Umax) => {
 }
 
 module.exports.handleTextBlock = handleTextBlock;
+module.exports.getAllLength = getAllLength;
+module.exports.getLinkLength = getLinkLength;
