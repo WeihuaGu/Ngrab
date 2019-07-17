@@ -1,4 +1,5 @@
 var grabtextblock = require('./grabtextblock');
+var irrelevantwords = ["版权", "声明", "搜索", "首页", "帮助", "注册", "登录", "反馈", "设置"];
 //获取文本块中的文字总长度
 var getAllLength = (textnode) => {
         var text = textnode.textContent;
@@ -25,8 +26,18 @@ var getLinkLength = (textnode) => {
 
 //获取为无效词的文字总长度
 var getUnrelatedLength = (textnode) => {
+        var text = textnode.textContent;
+        var sum = 0;
+        if (text)
+                irrelevantwords.forEach((irwords) => {
+                        var irwordsnum = (text.split(irwords)).length - 1;
+                        if (irwordsnum > 0)
+                                sum = irwordsnum * (irwords.length) + sum;
 
 
+
+                });
+        return sum;
 
 }
 
@@ -68,3 +79,4 @@ var handleTextBlock = (maytextnode, Lmax, Umax) => {
 module.exports.handleTextBlock = handleTextBlock;
 module.exports.getAllLength = getAllLength;
 module.exports.getLinkLength = getLinkLength;
+module.exports.getUnrelatedLength = getUnrelatedLength;
