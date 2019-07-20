@@ -46,7 +46,7 @@ var DL = (textnode) => {
         if(getAllLength(textnode)==0)
                 return 0;
         var density = getLinkLength(textnode) / getAllLength(textnode);
-        console.log("这个标签文本块的链接密度为" + density);
+        //console.log("这个标签文本块的链接密度为" + density);
         return density;
 }
 
@@ -55,7 +55,7 @@ var DU = (textnode) => {
         if(getAllLength(textnode)==0)
                 return 0;
         var density = getUnrelatedLength(textnode) / getAllLength(textnode);
-        console.log("这个标签文本块的无关词密度为" + density);
+        //console.log("这个标签文本块的无关词密度为" + density);
         return density;
 
 }
@@ -67,7 +67,7 @@ var handleTextBlock = (maytextnode, Lmax, Umax) => {
                         handleTextBlock(childlist[i], Lmax, Umax);
         } else {
                 if (DL(maytextnode) > Lmax | DU(maytextnode) > Umax) {
-                        console.log("大于阈值，删除节点");
+                        //console.log("大于阈值，删除节点");
                         var parent = maytextnode.parentElement;
                         if (parent == undefined)
                                 return;
@@ -75,7 +75,7 @@ var handleTextBlock = (maytextnode, Lmax, Umax) => {
 
                 }
                 else
-                        console.log("小于阈值，正文节点保留");
+                        ;//console.log("小于阈值，正文节点保留");
 
         }
 

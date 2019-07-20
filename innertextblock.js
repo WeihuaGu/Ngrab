@@ -44,7 +44,10 @@ var getTextlineArray = (textnode) => {
 }
 
 var len = (textlinearray, i) => {
-        return textlinearray[i].text.lenght;
+        if(textlinearray[i]!=undefined)
+            return textlinearray[i].text.lenght;
+        else
+            return 0;
 }
 
 var dens = (textlinearray, X, H) => {
@@ -102,6 +105,18 @@ var hindleInnerTextBlock = (textnode, textwindowhigh = 3, densitycoefficient = 0
         }
 }
 
+var handleInnerTextBlocks = (textnode) => {
+        if (textnode.childElementCount > 0) {
+                var childlist = textnode.children;
+                for (var i = 0; i < childlist.length; i++)
+                        handleInnerTextBlocks(childlist[i]);
+        } else {
+                hindleInnerTextBlock(textnode);
+
+
+        }
+        return textnode;
+}
 
 
 var deleteTextnode = (textnode) => {
@@ -126,3 +141,4 @@ var getConsecutivenumbers = (arr) => {
 
 module.exports.getTextlineArray = getTextlineArray;
 module.exports.hindleInnerTextBlock = hindleInnerTextBlock;
+module.exports.hindleInnerTextBlocks = handleInnerTextBlocks;
