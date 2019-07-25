@@ -16,3 +16,4 @@ console.log(textblock.getAllLength(body));
 console.log(textblock.getUnrelatedLength(body));
 console.log(textblock.DL(body));
 console.log(textblock.DU(body));
+
