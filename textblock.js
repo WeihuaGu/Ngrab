@@ -1,5 +1,6 @@
-var grabtextblock = require('./grabtextblock');
-var irrelevantwords = ["版权", "声明", "搜索", "首页", "主页", "帮助", "注册", "登录", "反馈", "设置", "分享", "下载"];
+var nodehandle = require('./nodehandle');
+var irrelevantwords = ["版权", "声明", "搜索", "首页", "主页", "帮助", "注册", "登录", "反馈", "设置", "更多","分享", "下载","最高可省","提示","了解一下","订阅","点赞","活动","发布","提交","话题","关注"];
+
 //获取文本块中的文字总长度
 var getAllLength = (textnode) => {
         var text = textnode.textContent;
@@ -60,7 +61,11 @@ var DU = (textnode) => {
 
 }
 
-var handleTextBlock = (maytextnode, Lmax, Umax) => {
+var handleTextBlock = (textnode, Lmax, Umax) => {
+        //var maytextnode=nodehandle.checkEmptyNode(textnode);
+        var maytextnode=textnode;
+        if(maytextnode == undefined)
+                return ;
         if (maytextnode.childElementCount > 0) {
                 var childlist = maytextnode.children;
                 for (var i = 0; i < childlist.length; i++)

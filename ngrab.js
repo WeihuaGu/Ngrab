@@ -1,17 +1,17 @@
 var page = require('./page');
-var grabtextblock = require('./grabtextblock');
+var downloadtextblocks = require('./downloadtextblocks');
 var textblock = require('./textblock');
 var innertextblock = require('./innertextblock');
 var getMainPage = (url, outputform, callback) => {
         page.getCleanPage(url).then((data) => {
-                var blocks = grabtextblock.getTextBlocks(data.body);
+                var blocks = downloadtextblocks.getTextBlocks(data.body);
                 var textblocks = textblock.handleTextBlock(blocks, 0.6, 0.1);
                 var handledinnertextblocks = innertextblock.hindleInnerTextBlocks(textblocks);
-                if (outputform == "text"){
+                if (outputform == "text") {
                         callback(null, handledinnertextblocks.textContent);
                         return;
                 }
-                if (outputform == "html"){
+                if (outputform == "html") {
                         callback(null, handledinnertextblocks.outerHTML);
                         return;
                 }

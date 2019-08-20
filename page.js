@@ -1,7 +1,7 @@
 var rp = require('request-promise');
 var cheerio = require('cheerio');
 
-var removetag = ["script"];
+var removetag = ["script","code","pre"];
 var getPage = (url) => {
         return rp(url);
 }

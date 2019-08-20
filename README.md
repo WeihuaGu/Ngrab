@@ -8,24 +8,10 @@ nodejs 实现的抓取页面正文的引擎
 `npm install`
 
 ## 使用
-返回纯文本
 ```
 var ngrab = require('./ngrab');
 var testurl = "https://xueqiu.com/9769652619/121511582";
 ngrab.getMainPage(testurl,"text",(err,result)=>{
-    if(err)
-        console.log(err);
-    else
-        console.log(result);
-
-
-});
-```
-返回纯html
-```
-var ngrab = require('./ngrab');
-var testurl = "https://xueqiu.com/9769652619/121511582";
-ngrab.getMainPage(testurl,"html",(err,result)=>{
     if(err)
         console.log(err);
     else
